@@ -22,8 +22,11 @@ stdenv.mkDerivation rec {
     owner = "SchedMD";
     repo = "slurm";
     # The release tags use - instead of .
-    rev = "${pname}-${builtins.replaceStrings ["."] ["-"] version}";
-    hash = "sha256-dfCQKKw44bD5d7Sv7e40Qm3df9Mzz7WvmWf7SP8R1KQ=";
+    # rev = "${pname}-${builtins.replaceStrings ["."] ["-"] version}";
+    # This includes a few commits that haven't been tagged, yet. The important one is:
+    # bf8bde7ca6508adf354f8a789629ca83090409dd  Fix segv in node validation on frontend node
+    rev = "792cf2d1f54ab314f2d885a45b7b099c5954f7cb";
+    hash = "sha256-vMchlO2dwKFvFFIz5ZbOYGnDXRs2alXFbueWj1QxJhQ=";
   };
 
   outputs = [ "out" "dev" ];
